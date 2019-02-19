@@ -1,5 +1,4 @@
-Kubernetes local deployment with Minikube and KVM
-=================================================
+# Kubernetes local deployment with Minikube and KVM
 
 [Minikube](https://github.com/kubernetes/minikube) is a cross-platform, community-driven [Kubernetes](https://kubernetes.io/) distribution, which is targeted to be primarily used at the local environments. It deploys a single-node cluster, which is a great option for having a simple Kubernetes cluster up&running on localhost.
 
@@ -13,21 +12,19 @@ Also, Virtualbox and KVM can't be used simultaneously, so if you are already run
 
 In this guide we'll focus on running Minikube with the KVM driver.
 
-Disclaimer
-----------
+## Disclaimer
 
 This is not an official minikube guide. You may find a detailed information on running and using Minikube on it's official [webpage](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md), where different usecases, operating systems, environemtns, etc. are covered. Instead, the purpose of this quide - to provide some easy and clear guidelines on running Minikube with KVM on a Linux.
 
-Prereqs
--------
+## Prereqs
 
--	Any Linux you like (in this tutorial we'll use Ubuntu 18.04 LTS, and all the instructions below are applicable to it. If you prefer using a different Linux distribution, please check out the relevant documentation, or make this tutorial better and submit a PR :wink:)
--	Installed and properly configured `libvirt` and QEMU-KVM
--	Kubernetes CLI (`kubectl`) for operating the Kubernetes cluster
+- Any Linux you like (in this tutorial we'll use Ubuntu 18.04 LTS, and all the instructions below are applicable to it. If you prefer using a different Linux distribution, please check out the relevant documentation, or make this tutorial better and submit a PR :wink:)
+- Installed and properly configured `libvirt` and QEMU-KVM
+- Kubernetes CLI (`kubectl`) for operating the Kubernetes cluster
 
 ### QEMU/KVM and libvirt installation
 
-*NOTE: skip if already installed*
+_NOTE: skip if already installed_
 
 ```shell
 sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
@@ -37,15 +34,14 @@ sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
 
 ### kubectl (Kubernetes CLI) installation
 
-*NOTE: skip if already installed*
+_NOTE: skip if already installed_
 
 ```shell
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && sudo install kubectl /usr/local/bin
 ```
 
-Installation
-------------
+## Installation
 
 ### Minikube KVM driver installation
 
@@ -79,8 +75,7 @@ and run minikube as usual:
 minikube start
 ```
 
-Verify the installation
------------------------
+## Verify the installation
 
 Verify if Minikube was installed properly:
 
@@ -96,6 +91,12 @@ kubectl get nodes
 
 Run a sample simple app (nginx in our case)
 
-```
+```shell
 kubectl run nginx --image=nginx
+```
+
+And check out if the Kubernetes pods are properly provisioned
+
+```shell
+kubectl get pods
 ```
