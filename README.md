@@ -78,3 +78,24 @@ and run minikube as usual:
 ```shell
 minikube start
 ```
+
+Verify the installation
+-----------------------
+
+Verify if Minikube was installed properly:
+
+```shell
+minikube version
+```
+
+Check out if the Kubernetes cluster is up and running:
+
+```shell
+kubectl get nodes
+```
+
+Run a sample simple app (nginx in our case)
+
+```
+kubectl run nginx --image=nginx
+```
