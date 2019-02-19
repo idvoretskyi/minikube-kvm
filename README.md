@@ -21,13 +21,15 @@ This is not an official minikube guide. You may find a detailed information on r
 Prereqs
 -------
 
--	Any Linux you like (in this tutorial we'll use Ubuntu 18.04 LTS, and all the instructions below are applicable to it. If you prefer using a different Linux distribution, please check out the relevant documentation, or make this tutorial better and submit a PR `:wink:`\)
+-	Any Linux you like (in this tutorial we'll use Ubuntu 18.04 LTS, and all the instructions below are applicable to it. If you prefer using a different Linux distribution, please check out the relevant documentation, or make this tutorial better and submit a PR :wink:)
 -	Installed and properly configured `libvirt` and QEMU-KVM
 
 ### QEMU/KVM and libvirt installation
 
 ```shell
-sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+    && sudo usermod -a -G libvirt $(whoami) \
+    && newgrp libvirt
 ```
 
 Installation
