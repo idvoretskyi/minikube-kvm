@@ -38,15 +38,15 @@ Installation
 ### Minikube KVM driver installation
 
 ```shell
-curl -LO
-https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 && sudo install docker-machine-driver-kvm2 /usr/local/bin/
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+    && sudo install docker-machine-driver-kvm2 /usr/local/bin/
 ```
 
 ### Minikube installation
 
 ```shell
-curl -LO
-https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && sudo install minikube-linux-amd64 /usr/local/bin/minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+    && sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
 ### To use the KVM2 driver:
