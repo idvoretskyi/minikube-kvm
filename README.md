@@ -23,13 +23,25 @@ Prereqs
 
 -	Any Linux you like (in this tutorial we'll use Ubuntu 18.04 LTS, and all the instructions below are applicable to it. If you prefer using a different Linux distribution, please check out the relevant documentation, or make this tutorial better and submit a PR :wink:)
 -	Installed and properly configured `libvirt` and QEMU-KVM
+-	Kubernetes CLI (`kubectl`) for operating the Kubernetes cluster
 
 ### QEMU/KVM and libvirt installation
+
+*NOTE: skip if already installed*
 
 ```shell
 sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
     && sudo usermod -a -G libvirt $(whoami) \
     && newgrp libvirt
+```
+
+### kubectl (Kubernetes CLI) installation
+
+*NOTE: skip if already installed*
+
+```shell
+curl -LO https://storage.googleapis.com/kubernetes-release/release/latest/bin/linux/amd64/kubectl \
+    && sudo install kubectl /usr/local/bin
 ```
 
 Installation
