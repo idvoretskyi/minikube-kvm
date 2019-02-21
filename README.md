@@ -70,6 +70,8 @@ Alternatively, it can be installed as a [snap](https://snapcraft.io/) package. T
 sudo snap install kubectl --classic
 ```
 
+![snap_kubectl.png](/images/snap_kubectl.png?raw=true "Installing kubectl with snap")
+
 Minikube installation
 ---------------------
 
