@@ -52,7 +52,7 @@ To have an ability to manage the Kubernetes cluster, we have to install
 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes CLI tool.
 
 The easier way to unstall it - download the pre-built binary and move it to the
-directory under the $PATH.
+directory under the \$PATH.
 
 ```shell
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
@@ -134,7 +134,7 @@ kubectl get nodes
 Now let's run a sample simple app (nginx in our case):
 
 ```shell
-kubectl run nginx --image=nginx
+kubectl create deployment nginx --image=nginx
 ```
 
 And check out if the Kubernetes pods are properly provisioned
@@ -142,3 +142,18 @@ And check out if the Kubernetes pods are properly provisioned
 ```shell
 kubectl get pods
 ```
+
+## Next steps
+
+Now the Kubernetes cluster on a local machine with Minikube and KVM is properly
+set up and configured.
+
+To proceed, you may check out the Kubernetes tutorials on the project website:
+
+- [Hello Minikube](https://kubernetes.io/docs/tutorials/hello-minikube/)
+
+Also, it's worth it checking the "Introduction to Kubernetes" course by The
+Linux Foundation/Cloud Native Computing Foundation, available for free on EDX:
+
+- [Introduction to
+  Kubernetes](https://www.edx.org/course/introduction-to-kubernetes#)
