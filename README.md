@@ -101,6 +101,8 @@ Before we proceed, we have to verify if Minikube is correctly installed. The sim
 minikube status
 ```
 
+![minikube_status.png](/images/minikube_status.png?raw=true "Minikube status")
+
 ### To use the KVM2 driver:
 
 Now let's run the local Kubernetes cluster with Minikube and KVM:
@@ -108,6 +110,8 @@ Now let's run the local Kubernetes cluster with Minikube and KVM:
 ```shell
 minikube start --vm-driver kvm2
 ```
+
+![minikube_start_--vm-driver_kvm2.png](/images/minikube_start_--vm-driver_kvm2.png?raw=true "Minikube start with kvm2 driver")
 
 ### Set KVM2 as a default VM driver for Minikube
 
@@ -123,6 +127,9 @@ So now let's run minikube as usual:
 minikube start
 ```
 
+![minikube_start.png](/images/minikube_start.png?raw=true "Minikube start with kvm2 driver as a default one")
+
+
 Verify the Kubernetes installation
 ----------------------------------
 
@@ -131,6 +138,8 @@ Let's check out if the Kubernetes cluster is up and running:
 ```shell
 kubectl get nodes
 ```
+
+![kubectl_get_nodes.png](/images/kubectl_get_nodes.png?raw=true "kubectl_get_nodes")
 
 Now let's run a simple sample app (nginx in our case):
 
@@ -143,6 +152,8 @@ Also, check out if the Kubernetes pods are correctly provisioned
 ```shell
 kubectl get pods
 ```
+
+![kubectl_nginx.png](/images/kubectl_nginx.png?raw=true "kubectl_nginx.png")
 
 Next steps
 ----------
