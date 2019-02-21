@@ -1,4 +1,4 @@
-# Kubernetes local deployment with Minikube and KVM
+# Running Kubernetes locally on Ubuntu Linux with Minikube and KVM
 
 [Minikube](https://github.com/kubernetes/minikube) is a cross-platform, community-driven [Kubernetes](https://kubernetes.io/) distribution, which is targeted to be primarily used at the local environments. It deploys a single-node cluster, which is a great option for having a simple Kubernetes cluster up&running on localhost.
 
@@ -48,14 +48,33 @@ sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
 
 _NOTE: skip if already installed_
 
+To have an ability to manage the Kubernetes cluster, we have to install
+[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes CLI tool.
+
+The easier way to unstall it - download the pre-built binary and move it to the
+directory under the $PATH.
+
 ```shell
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && sudo install kubectl /usr/local/bin
 ```
 
-## Installation
+Alternatively, it can be installed as a [snap](https://snapcraft.io/) package.
+This means that your snapd has to be [installed and
+configured](https://docs.snapcraft.io/installing-snapd/6735). On Ubuntu 18.04+
+(as well as on other Ubuntu flavors) snapd is available by default.
+
+```shell
+sudo snap install kubectl --classic
+```
+
+## Minikube installation
 
 ### Minikube KVM driver installation
+
+VM driver is a key requirement for the Minikube local deployment. As we've
+agreed to use KVM as a Minikube driver in this tutorial, let's install the KVM driver with the
+following command:
 
 ```shell
 curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
@@ -64,12 +83,25 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-
 
 ### Minikube installation
 
+Now let's install Minikube itself:
+
 ```shell
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
     && sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
+### Verify the Minikube installation
+
+Before we'll proceed, we have to verify if Minikube is installed properly. The
+simpliest way to do it - check the minikube status.
+
+```shell
+minikube status
+```
+
 ### To use the KVM2 driver:
+
+Now let's run the local Kubernetes cluster with Minikube and KVM:
 
 ```shell
 minikube start --vm-driver kvm2
@@ -77,31 +109,29 @@ minikube start --vm-driver kvm2
 
 ### Set KVM2 as a default VM driver for Minikube
 
+If KVM is a single driver for Minikube on our machine, it's way more convenient
+to set it as a default driver and run Minikube with less command-line
+arguments. The following command sets KVM driver as a default one:
+
 ```shell
 minikube config set vm-driver kvm2
 ```
 
-and run minikube as usual:
+And now let's run minikube as usual:
 
 ```shell
 minikube start
 ```
 
-## Verify the installation
+## Verify the Kubernetes installation
 
-Verify if Minikube was installed properly:
-
-```shell
-minikube version
-```
-
-Check out if the Kubernetes cluster is up and running:
+Let's check out if the Kubernetes cluster is up and running:
 
 ```shell
 kubectl get nodes
 ```
 
-Run a sample simple app (nginx in our case)
+Now let's run a sample simple app (nginx in our case):
 
 ```shell
 kubectl run nginx --image=nginx
