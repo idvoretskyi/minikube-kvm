@@ -26,6 +26,18 @@ This is not an official minikube guide. You may find a detailed information on r
 
 _NOTE: skip if already installed_
 
+Before we'll proceed, we have to verify if our host is able to run
+KVM-based virtual machines. This can be easily checked with the
+[kvm-ok](https://manpages.ubuntu.com/manpages/bionic/man1/kvm-ok.1.html) tool,
+available on Ubuntu.
+
+```shell
+sudo apt install cpu-checker && sudo kvm-ok
+```
+
+Now let's install KVM and libvirt (and add pur current user to the `libvirt`
+group to grant sufficient permissions:
+
 ```shell
 sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
     && sudo usermod -a -G libvirt $(whoami) \
