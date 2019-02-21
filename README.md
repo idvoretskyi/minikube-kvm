@@ -57,7 +57,7 @@ sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
 
 To have an ability to manage the Kubernetes cluster, we have to install [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes CLI tool.
 
-The more natural way to install it - download the pre-built binary and move it to the directory under the \$PATH.
+The natural way to install it - download the pre-built binary and move it to the directory under the \$PATH.
 
 ```shell
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
