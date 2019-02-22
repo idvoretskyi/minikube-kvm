@@ -32,7 +32,7 @@ Prereqs
 Before we proceed, we have to verify if our host can run KVM-based virtual machines. This can be easily checked with the [kvm-ok](https://manpages.ubuntu.com/manpages/bionic/man1/kvm-ok.1.html) tool, available on Ubuntu.
 
 ```shell
-sudo apt install cpu-checker && sudo kvm-ok
+sudo apt install -y cpu-checker && sudo kvm-ok
 ```
 
 If you receive the following output after running `kvm-ok`, you can use KVM on your machine (otherwise, please check out your configuration):
@@ -46,7 +46,7 @@ KVM acceleration can be used
 Now let's install KVM and libvirt (and add our current user to the `libvirt` group to grant sufficient permissions:
 
 ```shell
-sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+sudo apt install -y libvirt-clients libvirt-daemon-system qemu-kvm \
     && sudo usermod -a -G libvirt $(whoami) \
     && newgrp libvirt
 ```
