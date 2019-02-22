@@ -3,15 +3,13 @@ Running Kubernetes locally on Ubuntu Linux with Minikube and KVM
 
 [Minikube](https://github.com/kubernetes/minikube) is a cross-platform, community-driven [Kubernetes](https://kubernetes.io/) distribution, which is targeted to be primarily used in the local environments. It deploys a single-node cluster, which is an excellent option for having a simple Kubernetes cluster up&running on localhost.
 
-Minikube is designed to be used as a virtual machine (VM), and the default VM runtime is Virtualbox. At the same time, extensibility is one of the critical benefits of Minikube, so it's possible to use it without Virtualbox, but with other [drivers](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md).
+Minikube is designed to be used as a virtual machine (VM), and the default VM runtime of Minikube is VirtualBox. At the same time, extensibility is one of the critical benefits of Minikube, so it's possible to use it without VirtualBox, but with other [drivers](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md).
 
-By default, Minikube uses Virtualbox as a runtime for running the virtual machine. Virtualbox is a cross-platform solution, which can be used on the various sorts of operating systems, including GNU/Linux, Windows, and macOS.
+At the same time, QEMU/KVM is a Linux-native virtualization solution, which may offer more benefits comparing to VirtualBox. Specifically, it's way more natural to use KVM on the headless GNU/Linux server.
 
-At the same time, QEMU/KVM is a Linux-native virtualization solution, which may offer more benefits comparing to Virtualbox. Specifically, it's way easier to use KVM on the headless GNU/Linux server.
+Also, VirtualBox and KVM can't be used simultaneously, so if you are already running any KVM workloads on some machine, and willing to run Minikube there as well, using the KVM minikube driver is a preferred way to go.
 
-Also, Virtualbox and KVM can't be used simultaneously, so if you are already running any KVM workloads on some machine, and willing to run Minikube there as well, using the KVM minikube driver is a preferred way to go.
-
-In this guide, we'll focus on running Minikube with the KVM driver.
+In this guide, we'll focus on running Minikube with the KVM driver on Ubuntu 18.04 LTS.
 
 Disclaimer
 ----------
@@ -128,7 +126,6 @@ minikube start
 ```
 
 ![minikube_start.png](/images/minikube_start.png?raw=true "Minikube start with kvm2 driver as a default one")
-
 
 Verify the Kubernetes installation
 ----------------------------------
